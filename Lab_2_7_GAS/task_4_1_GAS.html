@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Задание 4.1 (Калькулятор)</title>
+    <style>
+      * {
+        font-size: large;
+      }
+      body {
+        margin: 30px;
+        /* padding: 0; */
+        background-color: gray;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      body:first-child {
+        display: flex;
+        flex-direction: row;
+      }
+
+      input {
+        width: 100px;
+        height: 30px;
+        margin: 5px;
+        color: black;
+        padding-left: 10px;
+      }
+
+      button {
+        width: 50px;
+        height: 35px;
+        cursor: pointer;
+        margin: 5px;
+        margin-bottom: 15px;
+        /* border-radius: 0px; */
+        background-color: white;
+        font-weight: 100;
+      }
+
+      button:hover {
+        background: rgb(112, 178, 245);
+      }
+
+      #res {
+        margin: 5px;
+        /* height: 40px; */
+        /* background-color: rgb(185, 185, 185); */
+        background-color: rgb(219, 219, 77);
+        /* width: 210px; */
+        padding: 7px 15px 7px 12px;
+        /* padding-right: 17px; */
+        display: inline;
+      }
+
+      h1 {
+        margin-left: 6px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Калькулятор</h1>
+
+    <p>
+      <input type="number" id="num-1" value="1" />
+      <br />
+      <input type="number" id="num-2" value="2" />
+    </p>
+
+    <p>
+      <button onclick="add()">+</button>
+      <button onclick="sub()">-</button>
+      <button onclick="mul()">*</button>
+      <button onclick="div()">/</button>
+      <button onclick="inc()">++</button>
+      <button onclick="dec()">--</button>
+    </p>
+
+    <p id="res">Результат:</p>
+
+    <script language="javascript">
+      var num1El = document.getElementById('num-1');
+      var num2El = document.getElementById('num-2');
+      var resEl = document.getElementById('res');
+
+      function add() {
+        var num1 = parseFloat(num1El.value);
+        var num2 = parseFloat(num2El.value);
+        var res = num1 + num2;
+
+        resEl.innerText = 'Результат: ' + res;
+      }
+
+      function sub() {
+        var num1 = parseFloat(num1El.value);
+        var num2 = parseFloat(num2El.value);
+        var res = num1 - num2;
+
+        resEl.innerText = 'Результат: ' + res;
+      }
+
+      function mul() {
+        var num1 = parseFloat(num1El.value);
+        var num2 = parseFloat(num2El.value);
+        var res = num1 * num2;
+
+        resEl.innerText = 'Результат: ' + res;
+      }
+
+      function div() {
+        var num1 = parseFloat(num1El.value);
+        var num2 = parseFloat(num2El.value);
+
+        if (num2 == 0) {
+          resEl.innerText = 'Ошибка: Деление на ноль!';
+        } else {
+          var res = num1 / num2;
+
+          resEl.innerText = 'Результат: ' + res;
+        }
+      }
+
+      function inc() {
+        var num1 = parseFloat(num1El.value);
+        num1++;
+        var res = num1;
+
+        resEl.innerText = 'Результат:  ' + res;
+      }
+
+      function dec() {
+        var num1 = parseFloat(num1El.value);
+        --num1;
+        var res = num1;
+
+        resEl.innerText = 'Результат: ' + res;
+      }
+    </script>
+  </body>
+</html>

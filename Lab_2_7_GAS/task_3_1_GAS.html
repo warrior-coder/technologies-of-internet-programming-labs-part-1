@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Задание 3.1</title>
+    <script language="javascript">
+      var monthsEn = [ 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December' ];
+      var monthsRu = [ 'Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь' ];
+
+      var monthNumber = parseInt(prompt('Введите номер месяца', 1));
+      var language = prompt('Выберите язык отображения (ru, en)', 'ru');
+
+      if (language == 'ru') {
+        alert('Месяц: ' + monthsRu[monthNumber - 1])
+      } else if (language == 'en') {
+        alert('Month: ' + monthsEn[monthNumber - 1])
+      } else {
+        alert('Ошибка. Повторите попытку.')
+      }
+    </script>
+  </head>
+</html>
