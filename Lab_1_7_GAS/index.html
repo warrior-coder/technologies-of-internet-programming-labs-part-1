@@ -1,127 +1,173 @@
 <html>
   <head>
     <title>Фотоальбом | Домашняя</title>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
+    <!-- ЛР3 -->
+    <!-- Задание 4.6.4.  -->
+    <!-- Пример 4.2.4. из лекции -->
+    <!-- Можно добавлять объявления в этот список. Для этого придуман нераспознаваемый элемент. -->
+    <ADLIST src="./lab_3_task_4_6_4_images/BSUIR.jpg" duration="1500" />
+    <ADLIST src="./lab_3_task_4_6_4_images/FITU.jpg" duration="1500" />
+    <ADLIST src="./lab_3_task_4_6_4_images/ITAS.jpg" duration="1500" />
+    <ADLIST src="./lab_3_task_4_6_4_images/605.jpg" duration="1500" />
+    <ADLIST src="./lab_3_task_4_6_4_images/Softarex.jpg" duration="1500" />
+    <ADLIST src="./lab_3_task_4_6_4_images/IT-GURU.jpg" duration="1500" />
+
+    <script language="JavaScript">
+      var adSet = document.getElementsByTagName('ADLIST');
+      adSet.current = 0;
+      var nextImage = document.createElement('IMG');
+
+      function preLoad() {
+        // получение следующего изображения.
+        // если ошибка, то переход к следующему изображению
+        // всегда переустанавливаются обработчики событий изображений перед назначением атрибута SRC для гарантии невозможности пропуска события
+        nextImage.onerror = preLoad;
+        nextImage.src = adSet[adSet.current].getAttribute('src');
+
+        // атрибут duration определяет длительность показа изображения.
+        nextImage.duration = adSet[adSet.current].getAttribute('duration');
+
+        if (nextImage.duration == null) {
+          // если не определено, то по умолчанию 2 секунды
+          nextImage.duration = 2000;
+        }
+
+        adSet.current++;
+
+        if (adSet.current == adSet.length) {
+          // стартуем снова.
+          adSet.current = 0;
+        }
+      }
+
+      function skipImage() {
+        // проверяется, загружено ли следующее изображение
+        if (nextImage.complete) {
+          document.all.ad.src = nextImage.src;
+          var duration = nextImage.duration;
+
+          preLoad();
+
+          window.tm = setTimeout('skipImage()', duration);
+        } else {
+          // быстрый повтор, пока следующее изображение не загружено
+          window.tm = setTimeout('skipImage()', 10);
+        }
+      }
+
+      preLoad();
+    </script>
+    <!------->
     <style>
-    hr {
-      border: solid 1px rgba(0, 0, 0, 0.342);
-    }
-
-    body {
-      margin: 0;
-      padding: 20px;
-      font: normal 18px 'Calibri';
-      background-color: rgb(222, 235, 210);
-      background-image: url('images/img-1.png');
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-      backdrop-filter: blur(10px);
-      /* padding: 10px; */
-    }
-
-    .container {
-      width: 80%;
-      margin: 0 auto;
-      padding: 5px 5px 5px 5px;
-      background-color: rgba(198, 207, 185, 0.753);
-      border-radius: 20px;
-    }
-
-    li {
-      /* margin-bottom: 15px; */
-      /* margin-top: 15px; */
-    }
-
-    .link-1 {
-      color: rgb(31, 123, 215);
-      font-style: italic;
-    }
-
-    .link-2 {
-      color: rgb(246, 64, 32);
-    }
-
-    h2 {
-      color: navy;
-    }
-        </style>
+      hr {
+        border: solid 1px rgba(0, 0, 0, 0.342);
+      }
+      body {
+        margin: 0;
+        padding: 20px;
+        font: normal 18px 'Calibri';
+        background-color: rgb(222, 235, 210);
+        background-image: url('images/img-1.png');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        backdrop-filter: blur(10px);
+      }
+      .container {
+        width: 80%;
+        margin: 0 auto;
+        padding: 5px 5px 5px 5px;
+        background-color: rgba(198, 207, 185, 0.753);
+        border-radius: 20px;
+      }
+      .link-1 {
+        color: rgb(31, 123, 215);
+        font-style: italic;
+      }
+      .link-2 {
+        color: rgb(246, 64, 32);
+      }
+      h2 {
+        color: navy;
+      }
+    </style>
   </head>
-  <body>
+  <body onload="window.tm = setTimeout('skipImage()', 1);" onunload="clearTimeout(window.tm);">
     <div class="container">
       <p align="center">
-        <a href="task_2_1_GAS.html" class="link-1">1-я страница</a>
-        &nbsp;|
-        <a href="task_2_2_GAS.html" class="link-1">2-я страница</a>
-        &nbsp;|
-        <a href="task_2_3_GAS.html" class="link-1">3-я страница</a>
-        &nbsp;|
-        <a href="task_2_4_GAS.html" class="link-1">4-я страница</a>
-        &nbsp;|
-        <a href="task_2_5_GAS.html" class="link-1">5-я страница</a>
-        &nbsp;|
-        <a href="frames/index.html" class="link-1">6-я страница</a>
-        &nbsp;|
-        <a href="task_2_7_GAS.html" class="link-1">7-я страница</a>
-        &nbsp;|
+        <a href="task_2_1_GAS.html" class="link-1">1-я страница</a>&nbsp;|
+        <a href="task_2_2_GAS.html" class="link-1">2-я страница</a>&nbsp;|
+        <a href="task_2_3_GAS.html" class="link-1">3-я страница</a>&nbsp;|
+        <a href="task_2_4_GAS.html" class="link-1">4-я страница</a>&nbsp;|
+        <a href="task_2_5_GAS.html" class="link-1">5-я страница</a>&nbsp;|
+        <a href="frames/index.html" class="link-1">6-я страница</a>&nbsp;|
+        <a href="task_2_7_GAS.html" class="link-1">7-я страница</a>&nbsp;|
         <a href="index.html" class="link-1">Домашняя</a>
       </p>
-      <hr width="100%">
+
+      <hr width="100%" />
+
       <div style="padding-left: 20px; padding-right: 20px; font-size: 20px">
         <p align="left">
-          <!-- <img src="images/img-1.png" align="left" height="150px" width="300px"> -->
           <font color="black">
             «Выдающаяся фотография – это глубина чувств, а не глубина резкости»
-            <br>
+            <br />
             <em>
-              <small>&nbsp;&nbsp;&nbsp;Питер Адамс</small>
+              <small>
+                &nbsp;&nbsp;&nbsp;Питер Адамс
+              </small>
             </em>
-            <!-- Афоризмы о фотографии   -->
           </font>
         </p>
         <center>
           <h2>ФОТОАЛЬБОМ</h2>
           <h3>
-            Добро пожаловать на сайт о фотоальбомах и курсов
-            <a href="index.html" class="link-1">«Фото-Гуру»</a>
-            !
+            Добро пожаловать на сайт о фотоальбомах и курсов <a href="index.html" class="link-1">«Фото-Гуру»</a>!
           </h3>
         </center>
       </div>
       <center>
         <div style="display: flex; width: 80%">
-          <img src="images/img-4.jpg" width="400"
-            style="filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.541)); margin: 20px">
+          <img
+            src="images/img-4.jpg"
+            width="400"
+            style="filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.541)); margin: 20px"
+          />
           <div style="font-size: 22px; text-align: justify; margin: 20px">
             <p>
-              Фотографии, расположенные в порядке актуальности в альбомчике,
-              кажутся уже забытым
-              раритетом.
+              Фотографии, расположенные в порядке актуальности в альбомчике, кажутся уже забытым раритетом.
               <span style="color: red; font-weight: bolder">Но это не так!</span>
-              Массивные фотоальбомы с плотными черно-белыми карточками,
-              глянцевыми снимками и даже с
-              картинками, сделанными на Полароид, передают из поколения в
-              поколение.
+              Массивные фотоальбомы с плотными черно-белыми карточками, глянцевыми снимками и даже с
+              картинками, сделанными на Полароид, передают из поколения в поколение.
             </p>
             <p>
-              Качественно составленное собственными руками издание может
-              прослужить долгие годы. Это
-              история, это семейная ценность, это запечатленные мгновения вашей
-              семьи.
+              Качественно составленное собственными руками издание может прослужить долгие годы. Это
+              история, это семейная ценность, это запечатленные мгновения вашей семьи.
             </p>
             <p>
-              Важно подобрать прочный альбом, чтобы в процессе листания
-              содержимое не испортилось,
+              Важно подобрать прочный альбом, чтобы в процессе листания содержимое не испортилось,
               не слезли защитные пленки или уголки.
             </p>
           </div>
         </div>
       </center>
-      <br>
-      <hr>
+      <!-- ЛР3 -->
+      <!-- Задание 4.6.4.  -->
+      <center>
+        <h2>Задание 4.6.4. (ЛР3) Периодически сменяющиеся изображения.</h2>
+        <img id="ad" src="./lab_3_task_4_6_4_images/BSUIR.jpg" />
+      </center>
+      <!------->
+
+      <br />
+      <hr />
+
       <p>
         <center>
-          <i style="color: navy"> Фотоальбом | Гудков А. С. &copy; 2023</i>
+          <i style="color: navy">
+            Фотоальбом | Гудков А. С. &copy; 2023
+          </i>
         </center>
       </p>
     </div>
