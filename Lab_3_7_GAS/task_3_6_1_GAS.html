@@ -1,0 +1,48 @@
+<!-- Пример 4.2.1. из лекции -->
+<!-- 
+  !ВНИМАНИЕ!
+  метод "document.all.tags()" устарел и больше не поддерживается современными браузерами
+  лично в моих браузерах Edge, Chrome, Firefox выдает следующую ошибку:
+  "Uncaught TypeError: document.all.tags is not a function"
+  вместо эмуляции старого браузера как в задании 3.5.2 воспользуюсь новой версией этого метода:
+  "document.getElementsByTagName()"
+ -->
+<html id="i_0">
+  <head id="i_1">
+    <title name="i_2">Простая страница</title>
+  </head>
+  <body id="i_3" bgcolor="#f8f8ff">
+    <h2 id="i_4">Пример для работы с коллекциями элементов</h2>
+
+    <p id="i_5">Элемент коллекции с индексом 5</p>
+    <p id="i_6">Элемент коллекции с индексом 6</p>
+
+    <script id="i_7" language="JavaScript">
+      for (var i = 0; i < document.all.length; i++) {
+        alert(
+          '1-й способ. Тэг с индексом ' +
+          i +
+          ': ' +
+          document.getElementsByTagName('*')[i].tagName +
+          '\n' +
+          '2-й способ. Тэг с индексом ' +
+          i +
+          ': ' +
+          document.all[i].tagName,
+        );
+      }
+
+      alert('Встретилось элементов в документе: ' + document.all.length); // выдаст 8
+
+      alert('5-й элемент: ' + document.getElementsByTagName('P')[0].tagName);
+      alert('6-й элемент: ' + document.getElementsByTagName('P')[1].tagName);
+      alert('7-й элемент (последний): ' + document.all.i_7.tagName);
+      alert('8-й элемент (первый в коллекции SCRIPTS): ' + document.scripts[0].tagName);
+    </script>
+
+    <script id="i_8" language="JavaScript">
+      alert('9-й элемент (второй в коллекции SCRIPTS): ' + document.scripts[1].tagName);
+      alert('Всего элементов в документе: ' + document.all.length); // выдаст 9
+    </script>
+  </body>
+</html>

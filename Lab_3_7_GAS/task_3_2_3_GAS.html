@@ -1,0 +1,160 @@
+<!-- Пример 3.6.9. из лекции -->
+<html>
+  <head>
+    <title>Задание 3.2.3. Простая страница: перевод температуры в градусах по разным шкалам</title>
+    <script language="JavaScript"></script>
+    <script language="JavaScript">
+      // Цельсий -> Фаренгейт
+      function inputCelsToFah() {
+        var cels = prompt(
+          'Введите значение температуры в градусах по цельсию',
+          'Введите температуру',
+        );
+
+        ansFah = doCelsToFah(cels);
+
+        alert(cels + ' градусов по Цельсию равно ' + ansFah + ' градусов по Фаренгейту');
+      }
+
+      function doCelsToFah(cels) {
+        var ans = 1.8 * Number(cels) + 32;
+
+        return ans;
+      }
+
+      // Фаренгейт -> Цельсий
+      function inputFahToCels() {
+        var fah = prompt(
+          'Введите значение температуры в градусах по Фаренгейту',
+          'Введите температуру',
+        );
+
+        ansCel = doFahToCels(fah);
+
+        alert(fah + ' градусов по Фаренгейту равно ' + ansCel + ' градусов по Цельсию');
+      }
+
+      function doFahToCels(fah) {
+        var ans = (Number(fah) - 32) / 1.8;
+
+        return ans;
+      }
+
+      // Цельсий -> Реомюр
+      function inputCelsToReo() {
+        var cels = prompt(
+          'Введите значение температуры в градусах по Цельсию',
+          'Введите температуру',
+        );
+
+        ansReo = doCelsToReo(cels);
+
+        alert(cels + ' градусов по Цельсию равно ' + ansReo + ' градусов по Реомюру');
+      }
+
+      function doCelsToReo(cels) {
+        var ans = 0.8 * Number(cels);
+
+        return ans;
+      }
+
+      // Реомюр -> Цельсий
+      function inputReoToCels() {
+        var reo = prompt(
+          'Введите значение температуры в градусах по Реомюру',
+          'Введите температуру',
+        );
+
+        ansCel = doReoToCels(reo);
+
+        alert(reo + ' градусов по Реомюру равно ' + ansCel + ' градусов по Цельсию');
+      }
+
+      function doReoToCels(reo) {
+        var ans = 1.25 * Number(reo);
+
+        return ans;
+      }
+
+      // Фаренгейт -> Реомюр
+      function inputFahToReo() {
+        var fah = prompt(
+          'Введите значение температуры в градусах по Фаренгейту',
+          'Введите температуру',
+        );
+
+        ansReo = doFahToReo(fah);
+
+        alert(fah + ' градусов по Фаренгейту равно ' + ansReo + ' градусов по Реомюру');
+      }
+
+      function doFahToReo(fah) {
+        var ans = (Number(fah) - 32) / 2.25;
+
+        return ans;
+      }
+
+      // Реомюр -> Фаренгейт
+      function inputReoToFah() {
+        var reo = prompt(
+          'Введите значение температуры в градусах по Реомюру',
+          'Введите температуру',
+        );
+
+        ansFah = doReoToFah(reo);
+
+        alert(reo + ' градусов по Реомюру равно ' + ansFah + ' градусов по Фаренгейту');
+      }
+
+      function doReoToFah(reo) {
+        var ans = 2.25 * Number(reo) + 32;
+
+        return ans;
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Задание 3.2.3.</h1>
+    <h2>Простая страница: перевод температуры в градусах по разным шкалам</h2>
+    <input
+      type="button"
+      value="Переход от градусов по Цельсию к градусам по Фаренгейту"
+      onClick="inputCelsToFah();"
+    />
+    <br />
+    <br />
+    <input
+      type="button"
+      value="Переход от градусов по Фаренгейту к градусам по Цельсию"
+      onClick="inputFah();"
+    />
+    <br />
+    <br />
+    <input
+      type="button"
+      value="Переход от градусов по Цельсию к градусам по Реомюру"
+      onClick="inputCelsToReo();"
+    />
+    <br />
+    <br />
+    <input
+      type="button"
+      value="Переход от градусов по Реомюру к градусам по Цельсию"
+      onClick="inputReoToCels();"
+    />
+    <br />
+    <br />
+    <input
+      type="button"
+      value="Переход от градусов по Фаренгейту к градусам по Реомюру"
+      onClick="inputFahToReo();"
+    />
+    <br />
+    <br />
+    <input
+      type="button"
+      value="Переход от градусов по Реомюру к градусам по Фаренгейту"
+      onClick="inputReoToFah();"
+    />
+  </body>
+</html>

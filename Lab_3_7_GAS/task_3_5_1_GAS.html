@@ -1,0 +1,136 @@
+<!-- Пример 4.1.1. из лекции -->
+<html>
+  <head>
+    <title>Задание 3.5.1</title>
+    <style type="Text/CSS">
+      img.rot {
+        animation: .8s linear 0s normal none infinite running rot;
+        width: 100px;
+      }
+      @keyframes rot {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+    <script language="JavaScript1.2">
+      var coordinate; // Текущая координата слоя
+      var upper_speed; // Приращение при движении слоя
+      var Circle = false;
+      var Line = false;
+
+      // установка начальных параметров перемещения слоя
+      function initLine() {
+        Circle = false;
+        Line = false;
+        coordinate = div_id.style.left = 1200;
+        upper_speed = 2;
+      }
+
+      // сдвиг слоя на вычисленный шаг вправо
+      var timerLine = 10;
+      function succLine() {
+        rotate_eco1.setAttribute('class', 'rot');
+        upper_speed = 2;
+        coordinate -= upper_speed;
+
+        if (coordinate < 300) {
+          coordinate = 1200;
+        }
+        div_id.style.left = coordinate;
+        timerLine = setTimeout('succLine()', 200);
+
+        if (Line) {
+          stoppedLine();
+        }
+      }
+
+      var timerCircle;
+      var speedCircle = 10;
+
+      function initCircle() {
+        if (!timerCircle) {
+          timerCircle = setInterval('moveImage()', speedCircle);
+        } else {
+          speedCircle--;
+          clearInterval(timerCircle);
+          timerCircle = setInterval('moveImage()', speedCircle);
+        }
+      }
+
+      // начальные установки для движения по окружности
+      var angle = 0;
+      var radius = 50;
+      var xBegin = 0;
+      var yBegin = 0;
+      var rad = 0;
+
+      // движение изображения-спутника по окружности
+      function moveImage() {
+        rotate_eco2.setAttribute('class', 'rot');
+        rad = (angle * Math.PI) / 180.0;
+
+        // вычисление координаты следующего положения изображения
+        document.myImage.style.left = xBegin + radius * Math.sin(rad);
+        document.myImage.style.top = yBegin + radius * Math.cos(rad);
+        angle-=2;
+
+        if (angle <= 0) {
+          angle = 360;
+        }
+
+        if (Circle) {
+          stoppedCircle();
+        }
+      }
+      function stoppedCircle() {
+        speedCircle = 0;
+        clearInterval(timerCircle);
+        timerCircle = false;
+        rotate_eco2.setAttribute('class', '');
+      }
+      function stoppedLine() {
+        clearTimeout(timerLine);
+        coordinate--;
+        Line = false;
+
+        if (upper_speed < 2) {
+          rotate_eco1.setAttribute('class', '');
+        }
+      }
+    </script>
+  </head>
+  <body onload="initLine()">
+    <center>
+      <form name="main_form">
+        <input type="button" value="Ускорить спутник" onClick="initCircle()" />
+        <input type="button" value="Ускорить влево" onClick="succLine()" />
+        <input type="button" value="Тормоз спутника" onClick="stoppedCircle()" />
+        <input type="button" value="Тормоз влево" onClick="stoppedLine()" />
+      </form>
+      <table width="1030" height="135" border="1">
+        <tr>
+          <td style="background-color: #8cfdfd;">
+            <div id="div_id" style="position: absolute; top: 100;">
+              <img
+                src="./image1/eco2.png"
+                name="myCenter"
+                id="rotate_eco1"
+                style="position: absolute; left: 0; top: 0; width: 20; height: 20; background-color: red;"
+              />
+              <img
+                src="./image1/eco1.png"
+                name="myImage"
+                id="rotate_eco2"
+                style="position: absolute; right: 0; top: 50; width: 20; height: 20; background-color: blue;"
+              />
+            </div>
+          </td>
+        </tr>
+      </table>
+    </center>
+  </body>
+</html>

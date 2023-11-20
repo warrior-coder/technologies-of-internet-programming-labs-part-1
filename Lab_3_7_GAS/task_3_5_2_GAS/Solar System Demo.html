@@ -1,0 +1,56 @@
+<!-- saved from https://www.dansteinman.com/dynduo/demos/solar/solar.html -->
+<!-- 
+  !ВНИМАНИЕ!
+  данный пример был предназначен для браузеров версий "Netscape 4" или "Internet Explorer 4"
+  чтобы устаревшие скрипты выполнялись задание запускалось в "Internet Explorer 11" с
+  установленным "Document mode = 5" для поддержки "legacy" скриптов
+ -->
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Задание 3.5.2. Solar System Demo</title>
+    <script language="JavaScript" src="./dynlayer.js"></script>
+    <script language="JavaScript" src="./circle.js"></script>
+    <script language="JavaScript">
+      function init() {
+        earth = new DynLayer('earthDiv');
+        earth.circle = new Circle('earth', 'circle');
+        moon = new DynLayer('moonDiv');
+        moon.circle = new Circle('moon', 'circle');
+
+        earth.circle.play(215, 3.0, 0, null, 20);
+        moon.circle.play(40, 6, 0, null, 20);
+      }
+    </script>
+  </head>
+
+  <body bgcolor="#000000" background="./stars.gif" onload="init()">
+    <div id="nametext" style="position: absolute; left: 5; top: 5; width: 450">
+      <font color="#FFFFFF" size="3">
+        Задание 3.5.2.
+        <br/>
+        Гудков А. С.
+        <br/>
+        Solar System Demo
+      </font>
+    </div>
+
+    <div id="sun" style="position: absolute; left: 694; top: 234; width: 71">
+      <img src="./sun.gif" width="71" height="71" border="0" />
+    </div>
+
+    <!--
+      Just like the real thing, the Moon revolves around the Earth, and the Earth revloves
+      around the Sun. These motions are independent of eachother. Since the Moon layer is
+      nested within the Earth, it too will follow whatever motion the earth does.
+    -->
+    <div id="earthDiv" style="position: absolute; left: 895; top: 220; width: 100; height: 100">
+      <div id="earthImg" style="position: absolute; left: 34; top: 34; width: 32; height: 32">
+        <img src="./earth.gif" width="32" height="32" border="0" />
+      </div>
+      <div id="moonDiv" style="position: absolute; left: 80; top: 40; width: 20; height: 20">
+        <img src="./moon.gif" width="20" height="20" border="0" />
+      </div>
+    </div>
+  </body>
+</html>

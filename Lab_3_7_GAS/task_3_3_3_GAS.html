@@ -1,0 +1,42 @@
+<!-- Пример 3.7.10. из лекции -->
+<html>
+  <head>
+    <title>Задание 3.3.3. Вычисление среднемесячного дохода</title>
+    <script language="JavaScript">
+      function income(ob_frm) {
+        var inc_total = 0.0;
+        var n = 6; // количество месяцев в форме
+
+        for (var i = 0; i < n; i++) {
+          inc_total += 1.0 * ob_frm.elements[i].value;
+        }
+
+        var inc_mean = inc_total / n;
+
+        ob_frm.result.value = inc_mean;
+      }
+    </script>
+  </head>
+  <body bgcolor="#8cfdfd">
+    <h2>Вычисление среднемесячного дохода студента Гудкова</h2>
+
+    <p>Введите начисленные Вам суммы за месяцы:</p>
+
+    <form name="form1">
+      сентябрь: <input type="text" size="8" />
+      октябрь: <input type="text" size="8" />
+      ноябрь: <input type="text" size="8" />
+      декабрь: <input type="text" size="8" />
+      январь: <input type="text" size="8" />
+      февраль: <input type="text" size="8" />
+      <br />
+      <br />
+      Средняя зарплата за три месяца: <input type="text" size="22" name="result" />
+      <br />
+      <br />
+      <input type="button" value="Вычислить" onclick="income(form1)" />
+      &nbsp; &nbsp; &nbsp; &nbsp;
+      <input type="reset" value="Обновить" />
+    </form>
+  </body>
+</html>

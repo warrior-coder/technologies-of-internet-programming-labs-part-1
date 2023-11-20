@@ -1,0 +1,44 @@
+<!-- Пример 3.5.9. из лекции -->
+<html>
+  <head>
+    <title>Задание 3.1.9. Простейшая страничка</title>
+    <script language="JavaScript">
+      var yourChoice;
+
+      yourChoice = prompt('Загадайте букву от "a" до "e".');
+
+      switch (yourChoice) {
+        case 'a':
+          alert('Вы ввели букву "a"');
+          break;
+        case 'b':
+          alert('Вы ввели букву "b"');
+          break;
+        case 'c':
+          alert('Вы ввели букву "c"');
+          break;
+        case 'd':
+          alert('Вы ввели букву "d"');
+          break;
+        case 'e':
+          alert('Вы ввели букву "e"');
+          break;
+        default:
+          alert('Вы не ввели букву, попадающее в промежуток от "a" до "e"');
+          break;
+      }
+
+      // условие задания выполнено, поэтому IF() не сработает
+      if (
+        yourChoice != 'a' &&
+        yourChoice != 'b' &&
+        yourChoice != 'c' &&
+        yourChoice != 'd' &&
+        yourChoice != 'e'
+      ) {
+        alert('Если это задание 3.5.9, то вы забыли выполнить его условие.');
+      }
+    </script>
+  </head>
+  <body></body>
+</html>

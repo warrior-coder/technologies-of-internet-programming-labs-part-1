@@ -1,0 +1,101 @@
+<!-- Пример 3.8.4. из лекции -->
+<html>
+  <head>
+    <title>Обработка данных формы с различными элементами управления: список, кнопка, текст.</title>
+    <script language="JavaScript">
+      function testSel() {
+        var d = document;
+        var a = d.forms['form1'].num.value;
+        var s;
+        var r = ' ';
+
+        // вычисление площади фигур в метрах
+        if (d.forms['form1'].elements[0][0].selected) {
+          r = r + d.forms['form1'].elements[0][0].text;
+          s = a * a * 3.14;
+        }
+        if (d.forms['form1'].elements[0][1].selected) {
+          r = r + d.forms['form1'].elements[0][1].text;
+          s = a * a;
+        }
+        if (d.forms['form1'].elements[0][2].selected) {
+          r = r + d.forms['form1'].elements[0][2].text;
+          s = (a * a) / 2;
+        }
+        if (d.forms['form1'].elements[0][3].selected) {
+          r = r + d.forms['form1'].elements[0][3].text;
+          s = (a * a * Math.sqrt(3)) / 4;
+        }
+
+        // перевод площади в выбранную единицу измерения
+        if (d.forms['form1'].elements[1][0].selected) {
+          s = s * 1_000_000; // 1 кв.м = 1000000 кв.мм
+          s += ' кв.мм';
+        }
+        if (d.forms['form1'].elements[1][1].selected) {
+          s = s * 10_000; // 1 кв.м = 10000 кв.см
+          s += ' кв.см';
+        }
+        if (d.forms['form1'].elements[1][2].selected) {
+          // 1 кв.м = 1 кв.м
+          s += ' кв.м';
+        }
+        if (d.forms['form1'].elements[1][3].selected) {
+          s = s * 1_550; // 1 кв.м = 1550 кв.дюймов
+          s += ' кв.дюймов';
+        }
+
+        d.forms['form1']['res'].value = s;
+        d.forms['form1']['fig'].value = r;
+      }
+    </script>
+  </head>
+  <body bgcolor="#8cfdfd">
+    <center>
+      <h3>Вычисление площадей некоторых фигур</h3>
+      <table border="5">
+        <form name="form1">
+          <tr>
+            <td>
+              Выберите фигуру:
+              <select name="list1" size="1">
+                <option value="0">круг</option>
+                <option value="1">квадрат</option>
+                <option value="2">треугольник (прямоугольный, равнобедренный)</option>
+                <option value="2">треугольник (равносторонний)</option>
+              </select>
+              <br />
+              Выберите единицу измерения:
+              <select name="list2" size="1">
+                <option value="0">миллиметры</option>
+                <option value="1">сантиметры</option>
+                <option value="2">метры</option>
+                <option value="3">дюймы</option>
+              </select>
+              <br />
+              Введите параметр (радиус/сторону/высоту), м:
+              <input type="text" size="5" name="num" />
+              <br />
+              <br />
+              <input type="button" value="Вычислить" onclick="testSel()" />
+              <br />
+              <br />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Фигура: <input type="text" name="fig" size="20" />
+              <br />
+              Площадь: <input type="text" name="res" size="35" />
+              <br />
+              <br />
+              <input type="reset" value="Обновить" />
+              <br />
+              <br />
+            </td>
+          </tr>
+        </form>
+      </table>
+    </center>
+  </body>
+</html>

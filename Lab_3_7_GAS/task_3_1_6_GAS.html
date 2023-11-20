@@ -1,0 +1,27 @@
+<!-- Пример 3.5.6. из лекции -->
+<html>
+  <head>
+    <title>Задание 3.1.6. Простейшая страничка</title>
+    <script language="JavaScript">
+      var myArray = new Array('JavaScript', 'TypeScript', 'CoffeeScript', 'WebAssembly');
+      var y = -1;
+      var ys = '';
+      var extent1 = '.gif';
+      var extent2 = '.jpg'; // вставьте в extent2 расширение для формата JPEG;
+
+      for (x in myArray) {
+        y++;
+        ys = y;
+        myArray[x] = '\n<a src="../image1/' + myArray[y] + extent2 + '">рис.' + ys + '</a>';
+      }
+
+      alert('Ссылки на мои картинки JPEG-формата:' + myArray);
+
+      // условие задания выполнено, поэтому IF() не сработает
+      if (extent2 != '.jpg') {
+        alert('Если это задание 3.5.6, то Вы, забыли про фото в формате jpeg');
+      }
+    </script>
+  </head>
+  <body></body>
+</html>

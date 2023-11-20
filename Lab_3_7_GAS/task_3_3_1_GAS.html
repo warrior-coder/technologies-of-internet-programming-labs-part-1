@@ -1,0 +1,27 @@
+<!-- Пример 3.7.1. из лекции -->
+<html>
+  <head>
+    <title>Задание 3.3.1. Простая страница</title>
+    <script language="JavaScript">
+      var rndNum = Math.random(); // 1-й вариант случайного числа (от 0 до 1)
+
+      alert('1-й радиус = ' + rndNum);
+      alert('Площадь круга с 1-м радиусом = ' + Math.PI * (rndNum * rndNum));
+
+      rndNum = rndNum * 10; // 2-й вариант случайного числа (от 0 до 10)
+
+      alert(' 2-й радиус = ' + Math.round(rndNum));
+      alert(
+        'Площадь круга со 2-м радиусом = ' + Math.PI * (Math.round(rndNum) * Math.round(rndNum)),
+      );
+
+      rndNum = Math.random() * 100; // 3-й вариант случайного числа (от 0 до 100)
+
+      alert('3-й радиус = ' + Math.round(rndNum));
+      alert(
+        'Площадь круга с 3-м радиусом = ' + Math.PI * (Math.round(rndNum) * Math.round(rndNum)),
+      );
+    </script>
+  </head>
+  <body></body>
+</html>

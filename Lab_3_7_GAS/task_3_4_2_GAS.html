@@ -1,0 +1,73 @@
+<!-- Пример 3.10.3. из лекции -->
+<html>
+  <head>
+    <title>Вычисление среднемесячного дохода</title>
+    <script language="JavaScript1.2" src="./lib/stat_pvn.js"></script>
+    <script language="JavaScript1.2">
+      function income(ob_frm) {
+        var arr = new Array(n); // n - вычисляется во время загрузки страницы
+
+        for (var i = 0; i < n; i++) {
+          arr[i] = 1.0 * ob_frm.elements[i].value;
+        }
+        
+        inc_mean = Math.round(mean_arr(arr) * 1000) / 1000;
+        ob_frm.result.value = inc_mean;
+
+        inc_max = max_arr(arr);
+        ob_frm.max.value = inc_max;
+
+        inc_min = min_arr(arr);
+        ob_frm.min.value = inc_min;
+      }
+    </script>
+  </head>
+  <body bgcolor="#8cfdfd">
+    <h2>Вычисление среднемесячного дохода студента Гудкова</h2>
+    <p>Введите полученные Вами суммы (вместо сумм по умолчанию) за месяцы:</p>
+    <form name="form1">
+      январь: <input id="m1" type="text" size="8" value="125.55" />
+      февраль: <input id="m2" type="text" size="8" value="135.55" />
+      март: <input id="m3" type="text" size="8" value="145.55" />
+      <br />
+      апрель: <input id="m4" type="text" size="8" value="155.55" />
+      май: <input id="m5" type="text" size="8" value="165.55" />
+      июнь: <input id="m6" type="text" size="8" value="175.55" />
+      <br>
+      июль: <input id="m7" type="text" size="8" value="125.55" />
+      август: <input id="m8" type="text" size="8" value="135.55" />
+      сентябрь: <input id="m9" type="text" size="8" value="145.55" />
+      <br>
+      октябрь: <input id="m10" type="text" size="8" value="155.55" />
+      ноябрь: <input id="m11" type="text" size="8" value="165.55" />
+      декабрь: <input id="m12" type="text" size="8" value="175.55" />
+      <br />
+      <br />
+      Средний доход за
+      <script>
+        var n = form1.elements.length; // количество месяцев в форме
+        document.write(n);
+      </script>
+      месяцев: <input type="text" size="8" name="result" />
+      <br />
+      <br />
+      Максимальный доход за
+      <script>
+        document.write(n);
+      </script>
+      месяцев: <input type="text" size="8" name="max"  />
+      <br />
+      <br />
+      Минимальный доход за
+      <script>
+        document.write(n);
+      </script>
+      месяцев: <input type="text" size="8" name="min" />
+      <br />
+      <br />
+      <input type="button" value="Вычислить" onclick="income(form1)" />
+      <br />
+      <input type="reset" value="Обновить" />
+    </form>
+  </body>
+</html>

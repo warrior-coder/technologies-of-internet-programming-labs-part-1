@@ -1,0 +1,28 @@
+<!-- Пример 3.7.4. из лекции -->
+<html>
+  <head>
+    <title>Задание 3.3.2. Простая страница</title>
+    <script language="JavaScript">
+      var date = new Date();
+
+      // создаем объект Date набором значений для года, месяца, дня (без учета времени)
+      var today_date = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+      
+      var today_ms = today_date.getTime(); // получаем сегодняшний день в миллисекундах
+      var day_per_ms = 1000 * 60 * 60 * 24; // 1д = 1000мс * 60с * 60мин * 24ч
+      var seven_day_per_ms = 7 * day_per_ms;
+      
+      today_ms += seven_day_per_ms;
+      date.setTime(today_ms);
+      var seven_day = date.toLocaleDateString();
+
+      alert(
+        'Дата и время через ' +
+        seven_day_per_ms / day_per_ms +
+        ' дней от текущей даты: ' +
+        seven_day,
+      );
+    </script>
+  </head>
+  <body></body>
+</html>
