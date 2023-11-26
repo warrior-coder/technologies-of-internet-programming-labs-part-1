@@ -3,12 +3,16 @@
     <title>Задание 3.2.2.</title>
     <script language="JavaScript">
       function goodbye() {
-        alert('До свидания!');
+        var message = 'Вы уверены, что хотите покинуть страницу?';
+
+        event.returnValue = message;
+
+        return message;
       }
     </script>
   </head>
-  <body onunload="goodbye()">
-    <h1>Задание 3.2.2.</h1>
-    <p>Страничка с функцией <i>"onunload"</i>.</p>
+  <body bgcolor="#a7ffff" onbeforeunload="goodbye()">
+    <h2>Задание 3.2.2.</h2>
+    <p>Страничка с функцией <i>"onbeforeunload"</i>.</p>
   </body>
 </html>

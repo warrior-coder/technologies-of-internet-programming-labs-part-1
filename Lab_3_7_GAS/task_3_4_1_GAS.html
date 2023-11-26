@@ -1,7 +1,7 @@
 <!-- Пример 3.8.4. из лекции -->
 <html>
   <head>
-    <title>Обработка данных формы с различными элементами управления: список, кнопка, текст.</title>
+    <title>Обработка данных формы с различными элементами управления</title>
     <script language="JavaScript">
       function testSel() {
         var d = document;
@@ -50,10 +50,10 @@
       }
     </script>
   </head>
-  <body bgcolor="#8cfdfd">
+  <body bgcolor="#a7ffff">
     <center>
-      <h3>Вычисление площадей некоторых фигур</h3>
-      <table border="5">
+      <h2>Вычисление площадей некоторых фигур</h2>
+      <table border="5" bgcolor="#d8d8d8">
         <form name="form1">
           <tr>
             <td>
@@ -65,8 +65,8 @@
                 <option value="2">треугольник (равносторонний)</option>
               </select>
               <br />
-              Выберите единицу измерения:
-              <select name="list2" size="1">
+              Выберите выходную единицу измерения:
+              <select name="list2" size="1" itemid="1">
                 <option value="0">миллиметры</option>
                 <option value="1">сантиметры</option>
                 <option value="2">метры</option>
@@ -84,7 +84,7 @@
           </tr>
           <tr>
             <td>
-              Фигура: <input type="text" name="fig" size="20" />
+              Фигура: <input type="text" name="fig" size="45" />
               <br />
               Площадь: <input type="text" name="res" size="35" />
               <br />

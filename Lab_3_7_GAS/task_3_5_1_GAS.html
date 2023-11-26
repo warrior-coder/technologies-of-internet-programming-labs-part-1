@@ -1,136 +1,132 @@
-<!-- Пример 4.1.1. из лекции -->
+<!DOCTYPE html>
 <html>
   <head>
     <title>Задание 3.5.1</title>
-    <style type="Text/CSS">
-      img.rot {
-        animation: .8s linear 0s normal none infinite running rot;
-        width: 100px;
-      }
-      @keyframes rot {
-        0% {
+    <style>
+      @keyframes planetAnim {
+        from {
           transform: rotate(0deg);
         }
-        100% {
+        to {
           transform: rotate(360deg);
         }
       }
+      @keyframes sputnikAnim {
+        from {
+          transform: rotate(0deg) translateX(150px);
+        }
+        to {
+          transform: rotate(360deg) translateX(150px);
+        }
+      }
+      @keyframes planetSputnikAnim {
+        from {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(1200px);
+        }
+      }
+      .background {
+        width: 1400px;
+        height: 500px;
+        margin-top: 20px;
+        background-color: #8cfdfd;
+        margin-bottom: 50px;
+        position: relative;
+      }
+      .planet-sputnik {
+        position: absolute;
+        top: 150px;
+        left: 0;
+        animation: planetSputnikAnim linear infinite;
+        animation-duration: 10s;
+      }
+      .planet {
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        background-color: magenta;
+        border-radius: 50%;
+        animation: planetAnim linear infinite;
+        animation-duration: 10s;
+      }
+      .sputnik {
+        position: absolute;
+        left: 75px;
+        top: 75px;
+        width: 50px;
+        height: 50px;
+        background-color: yellow;
+        border-radius: 50%;
+        animation: sputnikAnim linear infinite;
+        animation-duration: 5s;
+      }
     </style>
-    <script language="JavaScript1.2">
-      var coordinate; // Текущая координата слоя
-      var upper_speed; // Приращение при движении слоя
-      var Circle = false;
-      var Line = false;
+    <script>
+      function uskorPlanet() {
+        const planetSputnik = document.querySelector('.planet-sputnik');
+        const planet = document.querySelector('.planet');
+        const currentDuration = Number.parseFloat(
+          window.getComputedStyle(planetSputnik).animationDuration,
+        );
 
-      // установка начальных параметров перемещения слоя
-      function initLine() {
-        Circle = false;
-        Line = false;
-        coordinate = div_id.style.left = 1200;
-        upper_speed = 2;
-      }
-
-      // сдвиг слоя на вычисленный шаг вправо
-      var timerLine = 10;
-      function succLine() {
-        rotate_eco1.setAttribute('class', 'rot');
-        upper_speed = 2;
-        coordinate -= upper_speed;
-
-        if (coordinate < 300) {
-          coordinate = 1200;
-        }
-        div_id.style.left = coordinate;
-        timerLine = setTimeout('succLine()', 200);
-
-        if (Line) {
-          stoppedLine();
+        if (currentDuration > 1) {
+          planetSputnik.style.animationDuration = currentDuration - 1 + 's';
+          planet.style.animationDuration = (currentDuration - 1) + 's';
         }
       }
 
-      var timerCircle;
-      var speedCircle = 10;
+      function tormozPlanet() {
+        const planetSputnik = document.querySelector('.planet-sputnik');
+        const planet = document.querySelector('.planet');
+        const currentDuration = Number.parseFloat(
+          window.getComputedStyle(planetSputnik).animationDuration,
+        );
 
-      function initCircle() {
-        if (!timerCircle) {
-          timerCircle = setInterval('moveImage()', speedCircle);
-        } else {
-          speedCircle--;
-          clearInterval(timerCircle);
-          timerCircle = setInterval('moveImage()', speedCircle);
+        if (currentDuration < 20) {
+          planetSputnik.style.animationDuration = currentDuration + 1 + 's';
+          planet.style.animationDuration = (currentDuration - 1) + 's';
         }
       }
 
-      // начальные установки для движения по окружности
-      var angle = 0;
-      var radius = 50;
-      var xBegin = 0;
-      var yBegin = 0;
-      var rad = 0;
+      function uskorSputnik() {
+        const sputnik = document.querySelector('.sputnik');
+        const currentDuration = Number.parseFloat(
+          window.getComputedStyle(sputnik).animationDuration,
+        );
 
-      // движение изображения-спутника по окружности
-      function moveImage() {
-        rotate_eco2.setAttribute('class', 'rot');
-        rad = (angle * Math.PI) / 180.0;
-
-        // вычисление координаты следующего положения изображения
-        document.myImage.style.left = xBegin + radius * Math.sin(rad);
-        document.myImage.style.top = yBegin + radius * Math.cos(rad);
-        angle-=2;
-
-        if (angle <= 0) {
-          angle = 360;
-        }
-
-        if (Circle) {
-          stoppedCircle();
+        if (currentDuration > 1) {
+          sputnik.style.animationDuration = (currentDuration - 1) + 's';
         }
       }
-      function stoppedCircle() {
-        speedCircle = 0;
-        clearInterval(timerCircle);
-        timerCircle = false;
-        rotate_eco2.setAttribute('class', '');
-      }
-      function stoppedLine() {
-        clearTimeout(timerLine);
-        coordinate--;
-        Line = false;
 
-        if (upper_speed < 2) {
-          rotate_eco1.setAttribute('class', '');
+      function tormozSputnik() {
+        const sputnik = document.querySelector('.sputnik');
+        const currentDuration = Number.parseFloat(
+          window.getComputedStyle(sputnik).animationDuration,
+        );
+
+        if (currentDuration < 20) {
+          sputnik.style.animationDuration = (currentDuration + 1) + 's';
         }
       }
     </script>
   </head>
-  <body onload="initLine()">
+  <body>
     <center>
-      <form name="main_form">
-        <input type="button" value="Ускорить спутник" onClick="initCircle()" />
-        <input type="button" value="Ускорить влево" onClick="succLine()" />
-        <input type="button" value="Тормоз спутника" onClick="stoppedCircle()" />
-        <input type="button" value="Тормоз влево" onClick="stoppedLine()" />
-      </form>
-      <table width="1030" height="135" border="1">
-        <tr>
-          <td style="background-color: #8cfdfd;">
-            <div id="div_id" style="position: absolute; top: 100;">
-              <img
-                src="./image1/eco2.png"
-                name="myCenter"
-                id="rotate_eco1"
-                style="position: absolute; left: 0; top: 0; width: 20; height: 20; background-color: red;"
-              />
-              <img
-                src="./image1/eco1.png"
-                name="myImage"
-                id="rotate_eco2"
-                style="position: absolute; right: 0; top: 50; width: 20; height: 20; background-color: blue;"
-              />
-            </div>
-          </td>
-        </tr>
-      </table>
+      <h2>Задание 3.5.1</h2>
+      <button onclick="uskorSputnik()">Ускорить спутник</button>
+      <button onclick="uskorPlanet()">Ускорить планету</button>
+      <button onclick="tormozPlanet()">Тормозить планету</button>
+      <button onclick="tormozSputnik()">Тормозить спутник</button>
+
+      <div class="background">
+        <div class="planet-sputnik">
+          <img class="planet" src="./image1/eco2.png" />
+          <img class="sputnik" src="./image1/eco1.png" />
+        </div>
+      </div>
     </center>
   </body>
 </html>
