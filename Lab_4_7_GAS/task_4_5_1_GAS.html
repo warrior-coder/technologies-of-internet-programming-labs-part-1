@@ -1,0 +1,50 @@
+<!-- Пример 4.5.5. из лекции -->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Задание 4.5.6. Фреймы-слайды</title>
+    <script language="JavaScript">
+      var defSize = 25;
+
+      function display(f) {
+        var newRows = '';
+      
+        // Определение местоположения первого фрейма в коллекции all
+        var elFrame = document.all.tags('FRAME');
+
+        for (var intFrames = 0; intFrames < frames.length; intFrames++) {
+          var curF = frames[intFrames].document;
+
+          if (curF.body == f.document.body) {
+            // Предоставление всего пространства выделенному фрейму
+            newRows += '*, ';
+          
+            // Увеличение заголовка
+            curF.all.header.style.fontSize = '200%';
+          
+            // Включение полос прокрутки в активном фрейме путём доступа к элементу FRAME.
+            elFrame[intFrames].scrolling = 'yes';
+          } else {
+            // Установка размера по умолчанию
+            newRows += defSize.toString() + ', ';
+
+            // Сброс изменений размера и шрифта заголовка
+            curF.all.header.style.fontSize = '';
+
+            // Отключение прокручивания
+            document.all[intFrames].scrolling = 'no';
+          }
+        }
+
+        document.body.rows = newRows;
+      }
+    </script>
+  </head>
+  <frameset rows="*, 25, 25, 25, 25">
+    <frame src="./task_4_5_1_GAS_frames/task_4_5_1_GAS_frame_1.html" noresize>
+    <frame src="./task_4_5_1_GAS_frames/task_4_5_1_GAS_frame_2.html" noresize scrolling="no">
+    <frame src="./task_4_5_1_GAS_frames/task_4_5_1_GAS_frame_3.html" noresize scrolling="no">
+    <frame src="./task_4_5_1_GAS_frames/task_4_5_1_GAS_frame_4.html" noresize scrolling="no">
+    <frame src="./task_4_5_1_GAS_frames/task_4_5_1_GAS_frame_5.html" noresize scrolling="no">
+  </frameset>
+</html>

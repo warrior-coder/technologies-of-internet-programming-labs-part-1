@@ -1,0 +1,65 @@
+<!-- Пример 4.5.11. из лекции -->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Задание 4.5.4. Идущие часы</title>
+    <style type="text/css">
+      /* Формат цифр часов. */
+      #clock {
+        font-size: 200%;
+        font-weight: bold;
+      }
+    </style>
+    <script language="JavaScript">
+      // проверка - используется ли MS IE 4 и выше.
+      var MS = navigator.appVersion.indexOf('MSIE');
+      
+      window.isIE4 = MS > 0 && parseInt(navigator.appVersion.substring(MS + 5, MS + 6)) >= 4;
+      
+      function lead0(val) {
+        // добавляются нули впереди при необходимости (2 символа всего)
+        return val < 10 ? '0' + val.toString() : val;
+      }
+
+      function buildTime() {
+        var time = new Date();
+        var ampm = ' AM';
+        var h = time.getHours();
+      
+        // устанавливается время и индикатор времени суток
+        // (до/после полудня - am/pm).
+        if (h > 12) {
+          h = h - 12;
+          ampm = ' PM';
+        }
+
+        // делим текущие миллисекунды на 10 и округляем в меньшую сторону, чтобы получить количество целых десятки
+        
+        var time = new Date();
+        var ms10 = Math.floor(time.getMilliseconds() / 10);
+
+        return lead0(h) + ':' + lead0(time.getMinutes()) + ':' + lead0(time.getSeconds())+ ':' + lead0(ms10) + ampm;
+      }
+      
+      function tick() {
+        // обновление значения на часах на текущее.
+        document.all.clock.innerText = buildTime();
+      }
+    </script>
+  </head>
+  <!-- проверка: работает только в браузерах MS IE 4 и выше -->
+  <!-- при выгрузке удаляется таймер -->
+  <body onunload="if (null != window.tmr) clearInterval(window.tmr);" onload="if (window.isIE4) window.tmr = setInterval('tick()', 9);"  bgcolor="#c9ffff">
+    <h1>Задание 4.5.4. Цифровые часы</h1>
+    <p>
+      Запрограммировано с использованием HTML. Текущее время (AM/PM - до/после полудня):
+      <span ID="clock">
+        <script>
+          // Вывод исходного значения времени.
+          document.write(buildTime());
+        </script>
+      </span>
+      .
+    </p>
+  </body>
+</html>
