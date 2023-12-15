@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Задание 4.1. Калькулятор</title>
+    <link rel="stylesheet" href="./calculator.css" />
+  </head>
+  <body>
+    <div class="calculator">
+      <input type="text" id="expression-input" placeholder="" disabled />
+      <button id="increment-button" onclick="operatorButtonOnClick('++');">++</button>
+      <button id="decrement-button" onclick="operatorButtonOnClick('--');">--</button>
+      <button onclick="clearButtonOnClick();">CE</button>
+      <button onclick="deleteButtonOnClick();">DEL</button>
+      <button onclick="changeSignButtonOnClick();">±</button>
+      <button onclick="operatorButtonOnClick('÷');">÷</button>
+      <button onclick="digitButtonOnClick('7');">7</button>
+      <button onclick="digitButtonOnClick('8');">8</button>
+      <button onclick="digitButtonOnClick('9');">9</button>
+      <button onclick="operatorButtonOnClick('×');">×</button>
+      <button onclick="digitButtonOnClick('4');">4</button>
+      <button onclick="digitButtonOnClick('5');">5</button>
+      <button onclick="digitButtonOnClick('6');">6</button>
+      <button onclick="operatorButtonOnClick('-');">-</button>
+      <button onclick="digitButtonOnClick('1');">1</button>
+      <button onclick="digitButtonOnClick('2');">2</button>
+      <button onclick="digitButtonOnClick('3');">3</button>
+      <button onclick="operatorButtonOnClick('+');">+</button>
+      <button onclick="dotButtonOnClick();">.</button>
+      <button onclick="digitButtonOnClick('0');">0</button>
+      <button id="equal-button" onclick="equalButtonOnClick();">=</button>
+    </div>
+
+    <script src="./calculator.js"></script>
+  </body>
+</html>

@@ -3,19 +3,58 @@
   <head>
     <title>Задание 3.1</title>
     <script language="javascript">
-      var monthsEn = [ 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December' ];
-      var monthsRu = [ 'Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь' ];
+      var months = [
+        { en: 'January', ru: 'Январь', pl: 'Styczeń', by: 'Студзень' },
+        { en: 'February', ru: 'Февраль', pl: 'Luty', by: 'Люты' },
+        { en: 'March', ru: 'Март', pl: 'Marzec', by: 'Сакавік' },
+        { en: 'April', ru: 'Апрель', pl: 'Kwiecień', by: 'Красавік' },
+        { en: 'May', ru: 'Май', pl: 'Maj', by: 'Май' },
+        { en: 'June', ru: 'Июнь', pl: 'Czerwiec', by: 'Чэрвень' },
+        { en: 'July', ru: 'Июль', pl: 'Lipiec', by: 'Ліпень' },
+        { en: 'August', ru: 'Август', pl: 'Sierpień', by: 'Жнівень' },
+        { en: 'September', ru: 'Сентябрь', pl: 'Wrzesień', by: 'Верасень' },
+        { en: 'October', ru: 'Октябрь', pl: 'Październik', by: 'Кастрычнік' },
+        { en: 'November', ru: 'Ноябрь', pl: 'Listopad', by: 'Лістапад' },
+        { en: 'December', ru: 'Декабрь', pl: 'Grudzień', by: 'Снежань' },
+      ];
 
-      var monthNumber = parseInt(prompt('Введите номер месяца', 1));
-      var language = prompt('Выберите язык отображения (ru, en)', 'ru');
+      // выбираем язык отображения месяцев
+      var a = prompt('Выберите язык отображения месяцев (рус, англ, пол, бел)', 'рус');
 
-      if (language == 'ru') {
-        alert('Месяц: ' + monthsRu[monthNumber - 1])
-      } else if (language == 'en') {
-        alert('Month: ' + monthsEn[monthNumber - 1])
-      } else {
-        alert('Ошибка. Повторите попытку.')
+      while (!['рус', 'англ', 'пол', 'бел'].includes(a)) {
+        alert('Ошибка: выбран неверный язык отображения!');
+        a = prompt('Выберите язык отображения (рус, англ, пол, бел)', 'рус');
       }
+
+      // на лету переводим месяцы в нужный язык
+      for (var i = 0; i < months.length; i++) {
+        switch (a) {
+          case 'рус':
+            months[i] = months[i].ru;
+            break;
+          case 'англ':
+            months[i] = months[i].en;
+            break;
+          case 'пол':
+            months[i] = months[i].pl;
+            break;
+          case 'бел':
+            months[i] = months[i].by;
+            break;
+        }
+      }
+
+      // выбираем конкретный месяц
+      alert('Месяцы:\n' + months.join('\n'));
+
+      a = parseInt(prompt('Введите номер месяца', 1));
+
+      while (a < 1 || a > 12) {
+        alert('Ошибка: номер месяца не может быть меньше 1 или больше 12!');
+        a = parseInt(prompt('Введите номер месяца', 1));
+      }
+
+      alert('Месяц: ' + months[a - 1]);
     </script>
   </head>
 </html>
